@@ -1,4 +1,4 @@
-package com.wncg.mapper;
+package com.wncg.pojo;
 
 /**
  * Created by bo.e.zhao on 5/27/2017.
