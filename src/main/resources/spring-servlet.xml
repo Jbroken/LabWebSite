@@ -21,15 +21,14 @@
      -->
     <mvc:default-servlet-handler/>
     <mvc:resources location= "/images/" mapping="/images/**" />
+    <mvc:resources location= "/common/" mapping="/common/**" />
     <mvc:resources location="/plugins/" mapping="/plugins/**" />
 
     <!-- 配置视图解析器 -->
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsps/" />
         <property name="suffix" value=".jsp" />
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     </bean>
 
     <!--文件上传-->
