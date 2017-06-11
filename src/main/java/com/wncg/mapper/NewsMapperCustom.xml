@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wncg.mapper.NewsMapperCustom" >
+    <resultMap id="BaseResultMap" type="com.wncg.pojo.News" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="Title" property="title" jdbcType="VARCHAR" />
+        <result column="Author" property="author" jdbcType="VARCHAR" />
+        <result column="Origin" property="origin" jdbcType="VARCHAR" />
+        <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+        <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+        <result column="IsHotspot" property="ishotspot" jdbcType="BIT" />
+        <result column="IsPass" property="ispass" jdbcType="BIT" />
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.wncg.pojo.News" extends="BaseResultMap" >
+        <result column="Content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        ID, Title, Author, Origin, CreateDate, UpdateDate, IsHotspot, IsPass
+    </sql>
+    <sql id="Blob_Column_List" >
+        Content
+    </sql>
+</mapper>

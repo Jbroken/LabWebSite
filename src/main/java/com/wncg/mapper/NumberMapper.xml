@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wncg.mapper.NumberMapper" >
+  <resultMap id="BaseResultMap" type="com.wncg.pojo.Number" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="LogoID" property="logoid" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Graduate" property="graduate" jdbcType="VARCHAR" />
+    <result column="ProfessionalTitle" property="professionaltitle" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="IsPass" property="ispass" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wncg.pojo.Number" extends="BaseResultMap" >
+    <result column="Resume" property="resume" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LogoID, Name, Graduate, ProfessionalTitle, Type, CreateDate, UpdateDate, IsPass
+  </sql>
+  <sql id="Blob_Column_List" >
+    Resume
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_number
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_number
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wncg.pojo.Number" >
+    insert into t_number (ID, LogoID, Name, 
+      Graduate, ProfessionalTitle, Type, 
+      CreateDate, UpdateDate, IsPass, 
+      Resume)
+    values (#{id,jdbcType=INTEGER}, #{logoid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{graduate,jdbcType=VARCHAR}, #{professionaltitle,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, #{ispass,jdbcType=BIT}, 
+      #{resume,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wncg.pojo.Number" >
+    insert into t_number
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="logoid != null" >
+        LogoID,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="graduate != null" >
+        Graduate,
+      </if>
+      <if test="professionaltitle != null" >
+        ProfessionalTitle,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate,
+      </if>
+      <if test="ispass != null" >
+        IsPass,
+      </if>
+      <if test="resume != null" >
+        Resume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="logoid != null" >
+        #{logoid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="professionaltitle != null" >
+        #{professionaltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispass != null" >
+        #{ispass,jdbcType=BIT},
+      </if>
+      <if test="resume != null" >
+        #{resume,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wncg.pojo.Number" >
+    update t_number
+    <set >
+      <if test="logoid != null" >
+        LogoID = #{logoid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        Graduate = #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="professionaltitle != null" >
+        ProfessionalTitle = #{professionaltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        Type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispass != null" >
+        IsPass = #{ispass,jdbcType=BIT},
+      </if>
+      <if test="resume != null" >
+        Resume = #{resume,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wncg.pojo.Number" >
+    update t_number
+    set LogoID = #{logoid,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      Graduate = #{graduate,jdbcType=VARCHAR},
+      ProfessionalTitle = #{professionaltitle,jdbcType=VARCHAR},
+      Type = #{type,jdbcType=INTEGER},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      IsPass = #{ispass,jdbcType=BIT},
+      Resume = #{resume,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wncg.pojo.Number" >
+    update t_number
+    set LogoID = #{logoid,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      Graduate = #{graduate,jdbcType=VARCHAR},
+      ProfessionalTitle = #{professionaltitle,jdbcType=VARCHAR},
+      Type = #{type,jdbcType=INTEGER},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      IsPass = #{ispass,jdbcType=BIT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

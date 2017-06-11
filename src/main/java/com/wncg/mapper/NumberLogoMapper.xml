@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wncg.mapper.NumberLogoMapper" >
+  <resultMap id="BaseResultMap" type="com.wncg.pojo.NumberLogo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="LogoUrl" property="logourl" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="Update" property="update" jdbcType="TIMESTAMP" />
+    <result column="IsPass" property="ispass" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LogoUrl, CreateDate, Update, IsPass
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_numberlogo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_numberlogo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wncg.pojo.NumberLogo" >
+    insert into t_numberlogo (ID, LogoUrl, CreateDate, 
+      Update, IsPass)
+    values (#{id,jdbcType=INTEGER}, #{logourl,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{update,jdbcType=TIMESTAMP}, #{ispass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wncg.pojo.NumberLogo" >
+    insert into t_numberlogo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="logourl != null" >
+        LogoUrl,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="update != null" >
+        Update,
+      </if>
+      <if test="ispass != null" >
+        IsPass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="logourl != null" >
+        #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null" >
+        #{update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispass != null" >
+        #{ispass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wncg.pojo.NumberLogo" >
+    update t_numberlogo
+    <set >
+      <if test="logourl != null" >
+        LogoUrl = #{logourl,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null" >
+        Update = #{update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispass != null" >
+        IsPass = #{ispass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wncg.pojo.NumberLogo" >
+    update t_numberlogo
+    set LogoUrl = #{logourl,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      Update = #{update,jdbcType=TIMESTAMP},
+      IsPass = #{ispass,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
