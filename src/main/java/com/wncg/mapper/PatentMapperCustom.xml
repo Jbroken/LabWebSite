@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wncg.mapper.PatentMapperCustom" >
+    <resultMap id="BaseResultMap" type="com.wncg.pojo.Patent" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="Content" property="content" jdbcType="VARCHAR" />
+        <result column="Type" property="type" jdbcType="VARCHAR" />
+        <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+        <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+        <result column="IsPass" property="ispass" jdbcType="BIT" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        ID, Content, Type, CreateDate, UpdateDate, IsPass
+    </sql>
+
+    <select id="getPatentList" resultMap="BaseResultMap">
+        SELECT * FROM t_patent
+    </select>
+
+    <delete id="delPatentById">
+        DELETE FROM t_patent WHERE ID = #{id}
+    </delete>
+
+    <select id="getPatentById" resultMap="BaseResultMap">
+        SELECT * FROM t_patent WHERE ID = #{id}
+    </select>
+</mapper>
