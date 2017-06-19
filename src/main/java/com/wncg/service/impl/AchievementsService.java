@@ -1,7 +1,7 @@
 package com.wncg.service.impl;
 
 import com.wncg.mapper.PatentMapper;
-import com.wncg.mapper.PatentMapperCustom;
+import com.wncg.mapper.PatentMapperCustomer;
 import com.wncg.pojo.Patent;
 import com.wncg.service.IAchievementsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import java.util.List;
 @Service("achievementsService")
 public class AchievementsService implements IAchievementsService {
     @Autowired
-    PatentMapperCustom patentMapperCustom;
+    PatentMapperCustomer patentMapperCustomer;
     @Autowired
     PatentMapper patentMapper;
 
     public List<Patent> getPatentList() {
-        return patentMapperCustom.getPatentList();
+        return patentMapperCustomer.getPatentList();
     }
 
     public void addPatent(Patent patents) {
@@ -28,7 +28,7 @@ public class AchievementsService implements IAchievementsService {
     }
 
     public void delPatent(int id) {
-        patentMapperCustom.delPatentById(id);
+        patentMapperCustomer.delPatentById(id);
     }
 
     public void modifyPatent(Patent patent) {
@@ -36,6 +36,6 @@ public class AchievementsService implements IAchievementsService {
     }
 
     public Patent getPatentById(int id) {
-        return patentMapperCustom.getPatentById(id);
+        return patentMapperCustomer.getPatentById(id);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by BZhao on 2017/6/12.
  */
-public interface PatentMapperCustom {
+public interface PatentMapperCustomer {
     List<Patent> getPatentList();
 
     void delPatentById(int id);
