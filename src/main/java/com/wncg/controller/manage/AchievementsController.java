@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/achievements")
 public class AchievementsController {
     @Autowired
-    IAchievementsService achievementsService;
+    private IAchievementsService achievementsService;
 
     /**
      * 返回团队专利管理主页

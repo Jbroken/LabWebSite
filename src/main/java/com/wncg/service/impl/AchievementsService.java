@@ -15,9 +15,9 @@ import java.util.List;
 @Service("achievementsService")
 public class AchievementsService implements IAchievementsService {
     @Autowired
-    PatentMapperCustomer patentMapperCustomer;
+    private PatentMapperCustomer patentMapperCustomer;
     @Autowired
-    PatentMapper patentMapper;
+    private PatentMapper patentMapper;
 
     public List<Patent> getPatentList() {
         return patentMapperCustomer.getPatentList();

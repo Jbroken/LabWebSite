@@ -5,11 +5,12 @@
   Time: 21:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://" +request.getServerName()+":" +request.getServerPort()+path+"/" ;
 %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="<%=basePath%>/plugins/bootstrap/css/bootstrap.min.css">
@@ -25,58 +26,24 @@
 <link rel="stylesheet" href="<%=basePath%>/theme/css/_all-skins.min.css">
 
 <!-- jQuery 2.2.3 -->
-<script src="<%=basePath%>plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<%=basePath%>/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<%=basePath%>plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+
 <head>
     <title>Title</title>
 </head>
 <body>
-<header class="main-header">
-    <!-- Logo -->
-    <a class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>R</b>C</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>RonCoo-admin  </b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">龙果一号</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                            <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                            <p>
-                                龙果一号 - 超级管理员
-                                <small>2016-09 加入</small>
-                            </p>
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">简介</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">退出</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<%--header--%>
+<%@include file="/common/header.html"%>
+<%--left menu--%>
+<%@include file="/common/menu.html"%>
+<%--footer--%>
+<%@include file="/common/footer.html"%>
+
+<%--必须放在最底部--%>
+<script src="<%=basePath%>/plugins/app.min.js" type="text/javascript" ></script>
 </body>
 </html>

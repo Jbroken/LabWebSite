@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class ManagerController {
     @Autowired
-    IManagerService managerService;
+    private IManagerService managerService;
 
     @RequestMapping("/login")
     public String index(){
