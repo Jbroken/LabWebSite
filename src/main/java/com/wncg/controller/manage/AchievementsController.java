@@ -6,7 +6,9 @@ import com.wncg.vojo.Page;
 import com.wncg.vojo.PageT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class AchievementsController {
      */
     @RequestMapping("/patent")
     public String getPatentIndex(){
-        return "";
+        return "achievements/patent";
     }
 
     /**
@@ -33,6 +35,7 @@ public class AchievementsController {
      * @return
      */
     @RequestMapping("/getPatentList")
+    @ResponseBody
     public List<Patent> getPatentList(){
         return achievementsService.getPatentList();
     }
@@ -43,6 +46,7 @@ public class AchievementsController {
      * @return
      */
     @RequestMapping("/getPatentById")
+    @ResponseBody
     public PageT<Patent> getPatentById(int id){
         PageT<Patent> pageT = new PageT<Patent>();
         pageT.setData(achievementsService.getPatentById(id));
@@ -57,6 +61,7 @@ public class AchievementsController {
      * @return
      */
     @RequestMapping("/addPatent")
+    @ResponseBody
     public Page addPatent(Patent patents){
         Page page = new Page();
         achievementsService.addPatent(patents);
@@ -71,6 +76,7 @@ public class AchievementsController {
      * @return
      */
     @RequestMapping("/delPatent")
+    @ResponseBody
     public Page delPatent(int id){
         Page page = new Page();
         achievementsService.delPatent(id);
@@ -85,6 +91,7 @@ public class AchievementsController {
      * @return
      */
     @RequestMapping("/modifyPatent")
+    @ResponseBody
     public Page modifyPatent(Patent patent){
         Page page = new Page();
         achievementsService.modifyPatent(patent);

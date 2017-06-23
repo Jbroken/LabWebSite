@@ -7,6 +7,7 @@ import com.wncg.service.IAchievementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,6 +25,8 @@ public class AchievementsService implements IAchievementsService {
     }
 
     public void addPatent(Patent patents) {
+        patents.setCreatedate(new Date());
+        patents.setUpdatedate(new Date());
         patentMapper.insert(patents);
     }
 

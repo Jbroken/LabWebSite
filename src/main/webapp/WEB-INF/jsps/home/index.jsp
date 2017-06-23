@@ -35,13 +35,27 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<%--header--%>
-<%@include file="/common/header.html"%>
-<%--left menu--%>
-<%@include file="/common/menu.html"%>
-<%--footer--%>
-<%@include file="/common/footer.html"%>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <%--header begin--%>
+    <%@include file="/common/header.html"%>
+    <%--header end--%>
+
+    <%--left menu begin--%>
+    <%@include file="/common/menu.html"%>
+    <%--left menu end--%>
+
+    <%-- coustomer content begin--%>
+    <div class="content-wrapper">
+        <section class="content">
+            
+        </section>
+    </div>
+    <%--footer begin--%>
+    <%@include file="/common/footer.html"%>
+    <%--footer end--%>
+
+</div>
 
 <%--必须放在最底部--%>
 <script src="<%=basePath%>/plugins/app.min.js" type="text/javascript" ></script>
