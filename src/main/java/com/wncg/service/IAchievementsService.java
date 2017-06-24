@@ -9,7 +9,7 @@ import java.util.List;
  * Created by BZhao on 2017/6/12.
  */
 public interface IAchievementsService {
-    List<Patent> getPatentList();
+    List<Patent> getPatentList(Integer[] types);
 
     void addPatent(Patent patents);
 
@@ -18,4 +18,5 @@ public interface IAchievementsService {
     void modifyPatent(Patent patent);
 
     Patent getPatentById(int id);
+
 }

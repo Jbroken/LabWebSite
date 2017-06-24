@@ -20,8 +20,8 @@ public class AchievementsService implements IAchievementsService {
     @Autowired
     private PatentMapper patentMapper;
 
-    public List<Patent> getPatentList() {
-        return patentMapperCustomer.getPatentList();
+    public List<Patent> getPatentList(Integer[] types) {
+        return patentMapperCustomer.getPatentList(types);
     }
 
     public void addPatent(Patent patents) {
@@ -43,4 +43,5 @@ public class AchievementsService implements IAchievementsService {
     public Patent getPatentById(int id) {
         return patentMapperCustomer.getPatentById(id);
     }
+
 }

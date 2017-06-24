@@ -74,28 +74,27 @@
             <div class="row">
                 <div class="tool-bar">
 
-                        <span title="查询" class="icon-margin">
+                        <span title="查询" class="icon-margin" id="search">
                             <a class="glyphicon glyphicon-search"></a>
                         </span>
 
-                    <span title="添加" class="icon-margin" href="javascript=void(0)" id="add">
+                        <span title="添加" class="icon-margin" href="javascript=void(0)" id="add">
                             <a class="glyphicon glyphicon-plus-sign"></a>
                         </span>
 
-                    <span title="修改" class="icon-margin">
+                        <span title="修改" class="icon-margin" id="edit">
                             <a class="glyphicon glyphicon-pencil"></a>
                         </span>
 
-                    <span title="删除" class="icon-margin">
-                            <a class="glyphicon glyphicon-trash" id="del"></a>
+                        <span title="删除" class="icon-margin" id="del">
+                            <a class="glyphicon glyphicon-trash"></a>
                         </span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group query">
                     <label>专利类型：</label>
-                    <select class="selectpicker" id="">
-                        <option value=" ">请选择类型</option>
+                    <select class="selectpicker" id="patentType" multiple>
                         <option value="0">发明专利</option>
                         <option value="1">实用新型</option>
                         <option value="2">软件著作权</option>
@@ -132,10 +131,11 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">新增专利</h4>
+                    <h4 class="modal-title" id="addModal"></h4>
                 </div>
                 <div class="modal-body">
                     <form>
+                        <input id="typeID" class="hidden">
                         <div class="form-group">
                             <label class="control-label">专利类型：</label>
                             <select class="selectpicker" id="patent_type">
