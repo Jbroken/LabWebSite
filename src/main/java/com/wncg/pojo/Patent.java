@@ -1,5 +1,8 @@
 package com.wncg.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class Patent {
@@ -39,6 +42,7 @@ public class Patent {
         this.type = type == null ? null : type.trim();
     }
 
+    @JsonFormat(locale="zh", timezone="GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreatedate() {
         return createdate;
     }
@@ -47,6 +51,7 @@ public class Patent {
         this.createdate = createdate;
     }
 
+    @JsonFormat(locale="zh", timezone="GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getUpdatedate() {
         return updatedate;
     }

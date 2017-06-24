@@ -27,6 +27,7 @@ public class AchievementsService implements IAchievementsService {
     public void addPatent(Patent patents) {
         patents.setCreatedate(new Date());
         patents.setUpdatedate(new Date());
+        patents.setIspass(false);
         patentMapper.insert(patents);
     }
 
@@ -35,6 +36,7 @@ public class AchievementsService implements IAchievementsService {
     }
 
     public void modifyPatent(Patent patent) {
+        patent.setUpdatedate(new Date());
         patentMapper.updateByPrimaryKeySelective(patent);
     }
 

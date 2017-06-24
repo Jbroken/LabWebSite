@@ -43,6 +43,7 @@ function bindData(dataList) {
 }
 
 $('#add').click(function () {
+    editor.txt.clear();
     $('#Modal').modal('show');
 })
 
@@ -52,7 +53,8 @@ $('#add').click(function () {
 $('#save_patent').click(function () {
     var param ={};
     param.type = $('#patent_type').selectpicker('val');
-    param.patent_content = editor.txt.text();
+    console.log(editor.txt.html())
+    param.content = editor.txt.html();
     $.ajax({
         url:'../achievements/addPatent',
         type:'post',
