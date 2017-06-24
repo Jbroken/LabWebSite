@@ -70,91 +70,115 @@
                 </ol>
             </div>
         </section>
-        <section class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="tool-bar">
+        <div class="container">
+            <div class="row">
+                <div class="tool-bar">
 
                         <span title="查询" class="icon-margin">
                             <a class="glyphicon glyphicon-search"></a>
                         </span>
 
-                        <span title="添加" class="icon-margin" href="javascript=void(0)" id="add">
+                    <span title="添加" class="icon-margin" href="javascript=void(0)" id="add">
                             <a class="glyphicon glyphicon-plus-sign"></a>
                         </span>
 
-                        <span title="修改" class="icon-margin">
+                    <span title="修改" class="icon-margin">
                             <a class="glyphicon glyphicon-pencil"></a>
                         </span>
 
-                        <span title="删除" class="icon-margin">
-                            <a class="glyphicon glyphicon-trash"></a>
+                    <span title="删除" class="icon-margin">
+                            <a class="glyphicon glyphicon-trash" id="del"></a>
                         </span>
-                    </div>
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <label>专利类型：</label>
-                        <select class="selectpicker" id="">
-                            <option value=" ">请选择类型</option>
-                            <option value="0">发明专利</option>
-                            <option value="1">实用新型</option>
-                            <option value="2">软件著作权</option>
-                        </select>
+            </div>
+            <div class="row">
+                <div class="form-group query">
+                    <label>专利类型：</label>
+                    <select class="selectpicker" id="">
+                        <option value=" ">请选择类型</option>
+                        <option value="0">发明专利</option>
+                        <option value="1">实用新型</option>
+                        <option value="2">软件著作权</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-hover table-bordered table-condensed customer-font-size">
+                                <thead>
+                                <tr class="info">
+                                    <th>#</th>
+                                    <th>编号</th>
+                                    <th>内容</th>
+                                    <th>类别</th>
+                                    <th>创建时间</th>
+                                    <th>更新时间</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered customer-font-size">
-                            <thead>
-                            <tr>
-                                <th>编号</th>
-                                <th>内容</th>
-                                <th>类别</th>
-                                <th>创建时间</th>
-                                <th>更新时间</th>
-                            </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
-        <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">新增专利</h4>
-                    </div>
-                    <div class="modal-body">
+    <!--Add Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">新增专利</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
                         <div class="form-group">
-                            <label>专利类型：</label>
+                            <label class="control-label">专利类型：</label>
                             <select class="selectpicker" id="patent_type">
                                 <option value="0">发明专利</option>
                                 <option value="1">实用新型</option>
                                 <option value="2">软件著作权</option>
                             </select>
                         </div>
-                        <label>内容</label>
-                        <div id="patent_text"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" id="save_patent">保存</button>
-                    </div>
+                        <div class="form-group">
+                            <label class="control-label">内容</label>
+                            <div id="patent_text"></div>
+                        </div >
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="save_patent">保存</button>
                 </div>
             </div>
         </div>
-        <%--footer begin--%>
-        <%@include file="/common/footer.html" %>
-        <%--footer end--%>
+    </div>
+    <!--Del Modal -->
+    <div class="modal fade" id="Del_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel1">删除专利</h4>
+                </div>
+                <div class="modal-body">
+                    确定删除该专利？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="del_patent">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--footer begin--%>
+    <%@include file="/common/footer.html" %>
+    <%--footer end--%>
 
 </div>
 

@@ -26,25 +26,29 @@ function getAllData() {
  * 绑定数据到页面
  */
 function bindData(dataList) {
- var table = $('table tbody'),patentList = [];
- table.empty();
+    var table = $('table tbody'),patentList = [];
+    table.empty();
 
- $.each(dataList,function (index,node) {
-     patentList.push('<tr>');
-     patentList.push('<td>'+(index+1)+'</td>');
-     patentList.push('<td class="hidden"><input value= '+node.id+'/></td>');
-     patentList.push('<td>'+node.content+'</td>');
-     patentList.push('<td>'+patent_type[node.type]+'</td>');
-     patentList.push('<td>'+node.createdate+'</td>');
-     patentList.push('<td>'+node.updatedate+'</td>');
-     patentList.push('</tr>');
- })
+    $.each(dataList,function (index,node) {
+        patentList.push('<tr>');
+        patentList.push('<td><input type="checkbox" name="patentID" value='+node.id+'></td>');
+        patentList.push('<td>'+(index+1)+'</td>');
+        patentList.push('<td>'+node.content+'</td>');
+        patentList.push('<td>'+patent_type[node.type]+'</td>');
+        patentList.push('<td>'+node.createdate+'</td>');
+        patentList.push('<td>'+node.updatedate+'</td>');
+        patentList.push('</tr>');
+    })
     table.append(patentList.join(' '));
 }
 
 $('#add').click(function () {
     editor.txt.clear();
     $('#Modal').modal('show');
+});
+
+$('#del').click(function () {
+    $('#Del_Modal').modal('show');
 })
 
 /**
@@ -53,7 +57,6 @@ $('#add').click(function () {
 $('#save_patent').click(function () {
     var param ={};
     param.type = $('#patent_type').selectpicker('val');
-    console.log(editor.txt.html())
     param.content = editor.txt.html();
     $.ajax({
         url:'../achievements/addPatent',
@@ -70,6 +73,27 @@ $('#save_patent').click(function () {
         }
     })
 
+});
+
+/**
+ * 删除专利
+ */
+$('#del_patent').click(function () {
+    var id = $('input[name="patentID"]:checked').val();
+    $('#Del_Modal').modal('hide');
+    $.ajax({
+        url:'../achievements/delPatent',
+        type:'post',
+        dataType:'json',
+        data:{id:id},
+        success:function (rdata) {
+            $.alert({
+                title: '消息提示',
+                content: rdata.message,
+            });
+            getAllData();
+        }
+    })
 })
 
 
@@ -86,6 +110,6 @@ editor.create();
  */
 $('body').ready(
 
-   getAllData()
+    getAllData()
 
 )

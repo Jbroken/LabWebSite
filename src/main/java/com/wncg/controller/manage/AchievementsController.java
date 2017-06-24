@@ -80,7 +80,7 @@ public class AchievementsController {
     public Page delPatent(int id){
         Page page = new Page();
         achievementsService.delPatent(id);
-        page.setMessage("成功添加一条数据！");
+        page.setMessage("成功删除一条数据！");
         page.setSuccess(true);
         return page;
     }

@@ -4,9 +4,12 @@
 .tool-bar{
     text-align: right;
     font-size: 25px;
-    padding-right: 50px;
+    padding-right: 80px;
 }
 .icon-margin{
     margin-left: 10px;
     margin-right: 10px;
+}
+.query{
+    padding-left: 20px;
 }
