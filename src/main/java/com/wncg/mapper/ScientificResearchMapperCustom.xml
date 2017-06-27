@@ -21,7 +21,7 @@
           VALUES (#{Content},#{Type},#{isComplete},#{createtime},#{updatetime},#{ispass})
     </insert>
 
-    <select id="ScientificList_completed" resultMap="BaseResultMap">
+    <select id="ScientificList" resultMap="BaseResultMap">
         SELECT * FROM t_SientificRearch
     </select>
 

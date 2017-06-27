@@ -6,6 +6,8 @@ import com.wncg.service.ISientificService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by jing on 2017/6/20.
  */
@@ -16,5 +18,9 @@ public class SientificService implements ISientificService{
 
     public void addScientific(ScientificResearch scientificResearch) {
 
+    }
+
+    public List<ScientificResearch> getScientificList(){
+        return scientificResearchMapperCustom.ScientificList();
     }
 }
