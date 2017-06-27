@@ -36,7 +36,7 @@ public class AchievementsController {
      */
     @RequestMapping("/getPatentList")
     @ResponseBody
-    public List<Patent> getPatentList(Integer[] types){
+    public List<Patent> getPatentList(String[] types){
         return achievementsService.getPatentList(types);
     }
 

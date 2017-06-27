@@ -9,7 +9,7 @@ import java.util.List;
  * Created by BZhao on 2017/6/12.
  */
 public interface PatentMapperCustomer {
-    List<Patent> getPatentList(@Param("types") Integer[] types);
+    List<Patent> getPatentList(@Param("types") String[] types);
 
     void delPatentById(int id);
 

@@ -2,21 +2,21 @@
  * Created by BZhao on 2017/6/23.
  */
 
-var patent_type =["发明专利","实用新型","软件著作权"];
+var patent_type = ["发明专利", "实用新型", "软件著作权"];
 
 function bindPatentType() {
     var patentType = $("#patentType");
     patentType.empty();
-    var dataItems=[];
-    $.each(patent_type,function(index,item){
-        dataItems.push('<option value="'+index+'" class="text-left">'+item+'</option>')
+    var dataItems = [];
+    $.each(patent_type, function (index, item) {
+        dataItems.push('<option value="' + index + '" class="text-left">' + item + '</option>')
     });
     patentType.append(dataItems.join(''));
 
-    patentType.selectpicker('val',patent_type[0]);
-
     patentType.selectpicker('render');
     patentType.selectpicker('refresh');
+
+    patentType.selectpicker('val', patent_type[0]);
 }
 
 /**
@@ -26,15 +26,15 @@ function getAllData() {
     var typeList = $('#patentType').selectpicker('val');
     common.showWait();
     $.ajax({
-        url:'../achievements/getPatentList',
-        type:'post',
-        dataType:'json',
-        data:{types:typeList},
-        success:function (rdata) {
+        url: '../achievements/getPatentList',
+        type: 'post',
+        dataType: 'json',
+        data: {types: typeList},
+        success: function (rdata) {
             common.closeWait();
             bindData(rdata);
         },
-        error:function () {
+        error: function () {
             common.closeWait();
             common.errorPrompt("数据加载出错！")
         }
@@ -45,17 +45,17 @@ function getAllData() {
  * 绑定数据到页面
  */
 function bindData(dataList) {
-    var table = $('table tbody'),patentList = [];
+    var table = $('table tbody'), patentList = [];
     table.empty();
 
-    $.each(dataList,function (index,node) {
+    $.each(dataList, function (index, node) {
         patentList.push('<tr>');
-        patentList.push('<td><input type="checkbox" name="patentID" value='+node.id+'></td>');
-        patentList.push('<td>'+(index+1)+'</td>');
-        patentList.push('<td>'+node.content+'</td>');
-        patentList.push('<td>'+patent_type[node.type]+'</td>');
-        patentList.push('<td>'+node.createdate+'</td>');
-        patentList.push('<td>'+node.updatedate+'</td>');
+        patentList.push('<td><input type="checkbox" name="patentID" value=' + node.id + '></td>');
+        patentList.push('<td>' + (index + 1) + '</td>');
+        patentList.push('<td>' + node.content + '</td>');
+        patentList.push('<td>' + patent_type[node.type] + '</td>');
+        patentList.push('<td>' + node.createdate + '</td>');
+        patentList.push('<td>' + node.updatedate + '</td>');
         patentList.push('</tr>');
     })
     table.append(patentList.join(' '));
@@ -73,7 +73,7 @@ $('#add').click(function () {
 
     //移除save_patent上的click事件
     $('#save_patent').off();
-    $('#save_patent').on("click",function () {
+    $('#save_patent').on("click", function () {
         addPatent();
     })
 });
@@ -82,11 +82,11 @@ $('#del').click(function () {
     $('#Del_Modal').modal('show');
 })
 
-$('#search').click(function(){
+$('#search').click(function () {
     getAllData();
 });
 
-$('#edit').click(function(){
+$('#edit').click(function () {
     editPatent();
 });
 
@@ -95,28 +95,28 @@ $('#edit').click(function(){
  * 上传新增专利
  */
 function addPatent() {
-    var param ={};
+    var param = {};
     var patent_type = $('#patent_type').selectpicker('val');
-    if(patent_type == null){
-        patent_type =0;
+    if (patent_type == null) {
+        patent_type = 0;
     }
     param.type = patent_type;
     param.content = editor.txt.html();
+    common.showWait();
     $.ajax({
-        url:'../achievements/addPatent',
-        type:'post',
-        dataType:'json',
-        data:param,
-        success:function (rdata) {
+        url: '../achievements/addPatent',
+        type: 'post',
+        dataType: 'json',
+        data: param,
+        success: function (rdata) {
+            common.closeWait();
             common.successPrompt(rdata.message);
             $('#Modal').modal('hide');
             getAllData();
         },
-        error:function () {
-            $.alert({
-                title: '消息提示',
-                content: "上传数据失败！",
-            });
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("上传数据失败！")
         }
     })
 
@@ -128,23 +128,20 @@ function addPatent() {
 $('#del_patent').click(function () {
     var id = $('input[name="patentID"]:checked').val();
     $('#Del_Modal').modal('hide');
+    common.showWait();
     $.ajax({
-        url:'../achievements/delPatent',
-        type:'post',
-        dataType:'json',
-        data:{id:id},
-        success:function (rdata) {
-            $.alert({
-                title: '消息提示',
-                content: rdata.message,
-            });
+        url: '../achievements/delPatent',
+        type: 'post',
+        dataType: 'json',
+        data: {id: id},
+        success: function (rdata) {
+            common.closeWait();
+            common.successPrompt(rdata.message);
             getAllData();
         },
-        error:function () {
-            $.alert({
-                title: '消息提示',
-                content: "删除数据失败！",
-            });
+        error: function () {
+            common.closeWait();
+            common.successPrompt("删除数据失败！");
         }
     })
 })
@@ -154,26 +151,23 @@ $('#del_patent').click(function () {
  */
 function editPatent() {
     var id = $('input[name="patentID"]:checked').val();
-    if (id ==null){
-        $.alert({
-            title: '消息提示',
-            content: "请选中需要修改的数据！",
-        });
+    if (id == null) {
+        common.successPrompt("请选中需要修改的数据！");
         return;
     }
+    common.showWait();
     $.ajax({
-        url:'../achievements/getPatentById',
-        type:'post',
-        dataType:'json',
-        data:{id:id},
-        success:function (rdata) {
+        url: '../achievements/getPatentById',
+        type: 'post',
+        dataType: 'json',
+        data: {id: id},
+        success: function (rdata) {
+            common.closeWait();
             bindModal(rdata.data);
         },
-        error:function () {
-            $.alert({
-                title: '消息提示',
-                content: "获取数据失败！",
-            });
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("获取数据失败！");
         }
     })
 }
@@ -189,12 +183,12 @@ function bindModal(patent) {
     $('#addModal').append("修改专利");
 
     $('#typeID').val(patent.id);
-    $('#patent_type').selectpicker('val',patent_type[patent.type]);
+    $('#patent_type').selectpicker('val', patent_type[patent.type]);
     editor.txt.html(patent.content);
 
     //移除save_patent上的click事件
     $('#save_patent').off();
-    $('#save_patent').on("click",function () {
+    $('#save_patent').on("click", function () {
         updatePatent();
     })
 
@@ -204,32 +198,29 @@ function bindModal(patent) {
  * 上传编辑后的数据
  */
 function updatePatent() {
-    var param ={};
+    var param = {};
     var patent_type = $('#patent_type').selectpicker('val');
-    if(patent_type == null){
-        patent_type =0;
+    if (patent_type == null) {
+        patent_type = 0;
     }
     param.type = patent_type;
     param.content = editor.txt.html();
     param.id = $('#typeID').val();
+    common.showWait();
     $.ajax({
-        url:'../achievements/modifyPatent',
-        type:'post',
-        dataType:'json',
-        data:param,
-        success:function (rdata) {
-            $.alert({
-                title: '消息提示',
-                content: rdata.message,
-            });
+        url: '../achievements/modifyPatent',
+        type: 'post',
+        dataType: 'json',
+        data: param,
+        success: function (rdata) {
+            common.closeWait();
+            common.successPrompt(rdata.message);
             $('#Modal').modal('hide');
             getAllData();
         },
-        error:function () {
-            $.alert({
-                title: '消息提示',
-                content: "上传数据失败！",
-            });
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("修改数据失败！");
         }
     })
 }
@@ -246,8 +237,8 @@ editor.create();
 /**
  * 页面渲染后加载此函数
  */
-$('body').ready(
-    bindPatentType(),
-    getAllData()
-
+$(document).ready(function () {
+        bindPatentType()
+        getAllData()
+    }
 )

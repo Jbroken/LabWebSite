@@ -74,19 +74,19 @@
             <div class="row">
                 <div class="tool-bar">
 
-                        <span title="查询" class="icon-margin" id="search">
+                        <span title="查询" class="icon-margin" href="javascript:void(0);" id="search">
                             <a class="glyphicon glyphicon-search"></a>
                         </span>
 
-                        <span title="添加" class="icon-margin" href="javascript=void(0)" id="add">
+                        <span title="添加" class="icon-margin" href="javascript:void(0)" id="add">
                             <a class="glyphicon glyphicon-plus-sign"></a>
                         </span>
 
-                        <span title="修改" class="icon-margin" id="edit">
+                        <span title="修改" class="icon-margin" href="javascript:void(0);" id="edit">
                             <a class="glyphicon glyphicon-pencil"></a>
                         </span>
 
-                        <span title="删除" class="icon-margin" id="del">
+                        <span title="删除" class="icon-margin" href="javascript:void(0);" id="del">
                             <a class="glyphicon glyphicon-trash"></a>
                         </span>
                 </div>
