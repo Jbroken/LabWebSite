@@ -36,8 +36,8 @@ public class AchievementsController {
      */
     @RequestMapping("/getPatentList")
     @ResponseBody
-    public List<Patent> getPatentList(){
-        return achievementsService.getPatentList();
+    public List<Patent> getPatentList(String[] types){
+        return achievementsService.getPatentList(types);
     }
 
     /**
@@ -99,5 +99,4 @@ public class AchievementsController {
         page.setSuccess(true);
         return page;
     }
-
 }

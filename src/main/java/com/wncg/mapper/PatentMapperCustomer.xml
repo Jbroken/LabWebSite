@@ -15,6 +15,14 @@
 
     <select id="getPatentList" resultMap="BaseResultMap">
         SELECT * FROM t_patent
+        <where>
+            <if test="types !=null and types.length > 0">
+                Type IN
+                <foreach collection="types" item="node" index="index" open="(" separator="," close=")">
+                    #{node}
+                </foreach>
+            </if>
+        </where>
     </select>
 
     <delete id="delPatentById">
@@ -24,4 +32,5 @@
     <select id="getPatentById" resultMap="BaseResultMap">
         SELECT * FROM t_patent WHERE ID = #{id}
     </select>
+
 </mapper>
