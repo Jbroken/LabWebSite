@@ -24,21 +24,19 @@ function bindPatentType() {
  */
 function getAllData() {
     var typeList = $('#patentType').selectpicker('val');
-
-    console.log(typeList);
+    common.showWait();
     $.ajax({
         url:'../achievements/getPatentList',
         type:'post',
         dataType:'json',
         data:{types:typeList},
         success:function (rdata) {
+            common.closeWait();
             bindData(rdata);
         },
         error:function () {
-            $.alert({
-                title: '消息提示',
-                content: "请求数据失败！",
-            });
+            common.closeWait();
+            common.errorPrompt("数据加载出错！")
         }
     });
 }
@@ -110,10 +108,7 @@ function addPatent() {
         dataType:'json',
         data:param,
         success:function (rdata) {
-            $.alert({
-                title: '消息提示',
-                content: rdata.message,
-            });
+            common.successPrompt(rdata.message);
             $('#Modal').modal('hide');
             getAllData();
         },
