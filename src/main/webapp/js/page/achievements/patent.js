@@ -2,11 +2,8 @@
  * Created by BZhao on 2017/6/23.
  */
 
+var patent_type = ["发明专利", "实用新型", "软件著作权"];
 
-var patent_type =["发明专利","实用新型","软件著作权"];
-/**
- * 绑定页面专利类型
- */
 function bindPatentType() {
     var patentType = $("#patentType");
     patentType.empty();
