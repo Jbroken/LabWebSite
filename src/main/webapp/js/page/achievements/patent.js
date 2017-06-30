@@ -4,6 +4,9 @@
 
 var patent_type = ["发明专利", "实用新型", "软件著作权"];
 
+/**
+ *绑定页面专利类型
+ */
 function bindPatentType() {
     var patentType = $("#patentType");
     patentType.empty();
@@ -79,6 +82,11 @@ $('#add').click(function () {
 });
 
 $('#del').click(function () {
+    var id = $('input[name="patentID"]:checked').val();
+    if (id == null) {
+        common.successPrompt("请选中需要被删除的数据！");
+        return;
+    }
     $('#Del_Modal').modal('show');
 })
 
@@ -230,7 +238,7 @@ function updatePatent() {
  * 初始化富文本编辑器
  */
 var E = window.wangEditor;
-var editor = new E('#patent_text')
+var editor = new E('#patent_text');
 editor.create();
 /**********************end*******************/
 
@@ -238,7 +246,7 @@ editor.create();
  * 页面渲染后加载此函数
  */
 $(document).ready(function () {
-        bindPatentType()
-        getAllData()
+        bindPatentType();
+        getAllData();
     }
 )
