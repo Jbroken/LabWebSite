@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: jing
-  Date: 2017/6/25
-  Time: 20:23
+  Date: 2017/6/28
+  Time: 14:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
@@ -84,10 +84,10 @@
             </div>
             <div class="row">
                 <div class="form-group query">
-                    <select class="selectpicker" id="">
+                    <select class="selectpicker" id="scientifictype">
                         <label>项目类型：</label>
-                        <option value="0">在研项目</option>
-                        <option value="1">已完成项目</option>
+                        <option value="0">类型1</option>
+                        <option value="1">类型2</option>
                     </select>
                 </div>
             </div>
@@ -127,29 +127,37 @@
                     <form>
                         <div class="form-group">
                             <label class="control-label">项目类型：</label>
-                            <select class="selectpicker" id="patent_type">
-                                <option value="0">在研项目</option>
-                                <option value="1">已完成项目</option>
+                            <select class="selectpicker" id="scientific_type">
+                                <option value="0">类型1</option>
+                                <option value="1">类型2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">内容</label>
-                            <div id="patent_text"></div>
+                            <div id="scientific_text"></div>
                         </div >
+                        <div class="form-group">
+                            <label class="control-label">是否完成</label>
+                            <div id="iscompleted">
+                               <input type="radio" value="1">是
+                               <input type="radio" value="0">否
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="save_patent">保存</button>
+                    <button type="button" class="btn btn-primary" id="save_scientific">保存</button>
                 </div>
             </div>
         </div>
     </div>
 
+
     <%@include file="/common/footer.html"%>
 </div>
 <script src="<%=basePath%>/plugins/app.min.js" type="text/javascript"></script>"
 <script src="<%=basePath%>/plugins/Editor/wangEditor.min.js" type="text/javascript"></script>
-<script src="<%=basePath%>/js/page/achievements/sientific.js" type="text/javascript"></script>
+<script src="<%=basePath%>/js/page/achievements/scientific.js" type="text/javascript"></script>
 </body>
 </html>

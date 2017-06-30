@@ -21,8 +21,13 @@
           VALUES (#{Content},#{Type},#{isComplete},#{createtime},#{updatetime},#{ispass})
     </insert>
 
+    <delete id="deletScientific">
+        DELETE FROM t_ScientificResearch
+          WHERE ID=#{id}
+    </delete>
+
     <select id="ScientificList" resultMap="BaseResultMap">
-        SELECT * FROM t_SientificRearch
+        SELECT * FROM t_ScientificResearch
     </select>
 
 

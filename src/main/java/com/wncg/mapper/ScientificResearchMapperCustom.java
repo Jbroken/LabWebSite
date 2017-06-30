@@ -10,6 +10,8 @@ import java.util.List;
 public interface ScientificResearchMapperCustom {
     void addScientificRearch(ScientificResearch scientificResearch);
 
+    void deletScientific(int id);
+
     List<ScientificResearch> ScientificList();
 
 
