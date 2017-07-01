@@ -2,7 +2,7 @@
  * Created by BZhao on 2017/6/23.
  */
 var common={
-    showWait:function () {
+    showWait: () => {
         $(document.body).append('<div class="fakeloader"></div>');
         $(".fakeloader").fakeLoader({
             timeToHide:12000000,
@@ -10,17 +10,17 @@ var common={
             bgColor:"rgba(52,73,94,0.2)"
         });
     },
-    closeWait:function () {
+    closeWait: () => {
         $(".fakeloader").remove();
     },
-    successPrompt:function (Msg) {
+    successPrompt: Msg => {
         $.alert({
             title: '消息提示',
             type: 'blue',
             content: Msg
         });
     },
-    errorPrompt:function (Msg) {
+    errorPrompt: Msg => {
         $.alert({
             title: '错误提示',
             type: 'red',

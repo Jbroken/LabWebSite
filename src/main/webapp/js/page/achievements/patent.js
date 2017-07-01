@@ -46,8 +46,9 @@ function getAllData() {
 
 /**
  * 绑定数据到页面
+ *
  */
-function bindData(dataList) {
+    let bindData = dataList => {
     var table = $('table tbody'), patentList = [];
     table.empty();
 
@@ -249,4 +250,4 @@ $(document).ready(function () {
         bindPatentType();
         getAllData();
     }
-)
+);

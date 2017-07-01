@@ -16,8 +16,5 @@ public interface IScientificService {
 
     List<ScientificResearch> getScientificList(String types);
 
-
-
-
 }
 

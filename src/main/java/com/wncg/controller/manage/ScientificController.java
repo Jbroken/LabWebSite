@@ -1,6 +1,7 @@
 package com.wncg.controller.manage;
 
 import com.wncg.pojo.ScientificResearch;
+import com.wncg.service.IScientificService;
 import com.wncg.service.impl.ScientificService;
 import com.wncg.vojo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +18,25 @@ import java.util.List;
 @RequestMapping("/scientific")
 public class ScientificController {
     @Autowired
-    ScientificService scientificService;
+    private IScientificService scientificService;
 
     @RequestMapping("/scientific")
     public String getScientificIndex(){return "achievements/scientific";}
 
-   @RequestMapping("/addScientific")
-   @ResponseBody
+    @RequestMapping("/addScientific")
+    @ResponseBody
     public Page addScientific(ScientificResearch scientificResearch){
         Page page=new Page();
         scientificService.addScientific(scientificResearch);
         page.setMessage("成功添加一条数据！");
         page.setSuccess(true);
         return page;
-   }
+    }
 
 
-   @RequestMapping("/getScientificList")
-   @ResponseBody
+    @RequestMapping("/getScientificList")
+    @ResponseBody
     public List<ScientificResearch> getScientificList(String type){
         return scientificService.getScientificList(type);
-   }
+    }
 }

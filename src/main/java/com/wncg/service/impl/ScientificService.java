@@ -3,6 +3,7 @@ package com.wncg.service.impl;
 import com.wncg.mapper.ScientificResearchMapper;
 import com.wncg.mapper.ScientificResearchMapperCustom;
 import com.wncg.pojo.ScientificResearch;
+import com.wncg.service.IScientificService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,11 @@ import java.util.List;
 /**
  * Created by jing on 2017/6/28.
  */
-@Service("scientificservice")
-public class ScientificService {
+@Service("scientificService")
+public class ScientificService implements IScientificService {
     @Autowired
     ScientificResearchMapperCustom scientificResearchMapperCustom;
+    
     @Autowired
     ScientificResearchMapper scientificResearchMapper;
 
