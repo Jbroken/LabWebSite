@@ -30,7 +30,9 @@ public class ScientificService {
 
     }
 
-    public List<ScientificResearch> getScientificList(){
-        return scientificResearchMapperCustom.ScientificList();
+    public List<ScientificResearch> getScientificList(String types){
+        return scientificResearchMapperCustom.scientificList(types);
     }
+
+
 }

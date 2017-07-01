@@ -15,19 +15,20 @@
     </sql>
 
     <insert id="addScientific" >
-        INSERT into t_ScientificResearch(Content, Type,
+        INSERT into t_scientificresearch(Content, Type,
       IsComplete, CreateDate, UpdateDate,
       IsPass)
           VALUES (#{Content},#{Type},#{isComplete},#{createtime},#{updatetime},#{ispass})
     </insert>
 
-    <delete id="deletScientific">
-        DELETE FROM t_ScientificResearch
+    <delete id="deleteScientific">
+        DELETE FROM t_scientificresearch
           WHERE ID=#{id}
     </delete>
 
-    <select id="ScientificList" resultMap="BaseResultMap">
-        SELECT * FROM t_ScientificResearch
+    <select id="scientificList" resultMap="BaseResultMap">
+        SELECT * FROM t_scientificresearch
+         WHERE  Type=#{type}
     </select>
 
 

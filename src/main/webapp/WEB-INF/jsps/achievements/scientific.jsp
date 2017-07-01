@@ -84,7 +84,7 @@
             </div>
             <div class="row">
                 <div class="form-group query">
-                    <select class="selectpicker" id="scientifictype">
+                    <select class="selectpicker" id="scientificType">
                         <label>项目类型：</label>
                         <option value="0">类型1</option>
                         <option value="1">类型2</option>
@@ -104,6 +104,7 @@
                                     <th>类别</th>
                                     <th>创建时间</th>
                                     <th>更新时间</th>
+                                    <th>是否完成</th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -138,9 +139,9 @@
                         </div >
                         <div class="form-group">
                             <label class="control-label">是否完成</label>
-                            <div id="iscompleted">
-                               <input type="radio" value="1">是
-                               <input type="radio" value="0">否
+                            <div id="isCompleted">
+                               <input type="radio" name="complete" value="1">是
+                               <input type="radio" name="complete" value="0">否
                             </div>
                         </div>
                     </form>
@@ -152,8 +153,7 @@
             </div>
         </div>
     </div>
-
-
+    <!--delete modal-->
     <%@include file="/common/footer.html"%>
 </div>
 <script src="<%=basePath%>/plugins/app.min.js" type="text/javascript"></script>"

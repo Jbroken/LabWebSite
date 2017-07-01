@@ -29,5 +29,12 @@ public class ScientificControllerTest {
        System.out.println(A);
    }
 
+   @Test
+   public void getScientificList() throws Exception{
+      String type="类型1";
+      scientificController.getScientificList(type);
+      System.out.println("success");
+   }
+
 
 }

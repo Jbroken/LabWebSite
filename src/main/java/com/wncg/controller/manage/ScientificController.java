@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by jing on 2017/6/28.
  */
@@ -28,5 +30,12 @@ public class ScientificController {
         page.setMessage("成功添加一条数据！");
         page.setSuccess(true);
         return page;
+   }
+
+
+   @RequestMapping("/getScientificList")
+   @ResponseBody
+    public List<ScientificResearch> getScientificList(String type){
+        return scientificService.getScientificList(type);
    }
 }

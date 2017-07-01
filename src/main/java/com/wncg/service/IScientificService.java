@@ -14,7 +14,7 @@ public interface IScientificService {
 
     void deletScientific(int id);
 
-    List<ScientificResearch> getScientificList();
+    List<ScientificResearch> getScientificList(String types);
 
 
 
