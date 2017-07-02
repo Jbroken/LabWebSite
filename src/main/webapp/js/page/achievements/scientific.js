@@ -11,10 +11,21 @@ var E = window.wangEditor;
 var editor = new E('#scientific_text')
 editor.create();
 
-
+/*
+* 触发事件
+* */
 $('#add').click(function () {
     editor.txt.clear();
     $('#Modal').modal('show');
+});
+
+$('#delete').click(function () {
+    var delId=$('input[name="scientificID"]:checked').val();
+    if(delId==null){
+        common.successPrompt("请选中需要被删除的数据！");
+        return;//?
+    }
+    $('#del_Modal').modal('show');
 });
 
 /**
@@ -44,6 +55,30 @@ $('#save_scientific').click(function () {
     })
 
 });
+/*
+* 删除项目
+* */
+$('#sure_delete').click(function () {
+    var ID=$('input[name="scientificID"]:checked').val();
+    common.showWait();
+    $.ajax({
+        url:'../scientific/deleteScientific',
+        type:'post',
+        dataType:'json',
+        data:{id:ID},
+        success:function (rdata) {
+            common.closeWait();
+            common.successPrompt(rdata.message);
+            $('#del_Modal').modal('hide');
+            getAllData();
+        },
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("删除失败")
+        }
+        }
+    )
+})
 
 
 /**
@@ -67,6 +102,8 @@ function getAllData() {
         }
     });
 }
+
+
 
 /**
  * 绑定数据到页面

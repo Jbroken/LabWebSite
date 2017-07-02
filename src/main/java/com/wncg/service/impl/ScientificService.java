@@ -28,12 +28,17 @@ public class ScientificService implements IScientificService {
         scientificResearchMapper.insert(scientificResearch);
     }
 
-    public void deletScientific(int id){
-
+    public void deleteScientific(int id){
+        scientificResearchMapperCustom.deleteScientific(id);
     }
 
     public List<ScientificResearch> getScientificList(String types){
         return scientificResearchMapperCustom.scientificList(types);
+    }
+
+    public void updateScientific(ScientificResearch scientificResearch){
+        scientificResearch.setUpdatedate(new Date());
+        scientificResearchMapper.updateByPrimaryKey(scientificResearch);
     }
 
 

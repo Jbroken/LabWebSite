@@ -12,9 +12,11 @@ import java.util.List;
 public interface IScientificService {
     void addScientific(ScientificResearch scientificResearch);
 
-    void deletScientific(int id);
+    void deleteScientific(int id);
 
     List<ScientificResearch> getScientificList(String types);
+
+    void updateScientific(ScientificResearch scientificResearch);
 
 }
 

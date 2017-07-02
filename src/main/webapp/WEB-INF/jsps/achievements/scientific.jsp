@@ -77,7 +77,7 @@
                         <a class="glyphicon glyphicon-pencil"></a>
                     </span>
 
-                    <span class="icon-margin" title="删除">
+                    <span class="icon-margin" title="删除" id="delete">
                         <a class="glyphicon glyphicon-trash"></a>
                     </span>
                 </div>
@@ -154,6 +154,24 @@
         </div>
     </div>
     <!--delete modal-->
+    <div class="modal fade" id="del_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                   <button class="close" data-dismiss="modal" aria-label="Close"><span
+                           aria-hidden="true">&times;</span></button>
+                   <h4 class="modal-title" id="myModalLabel1">删除项目</h4>
+               </div>
+               <div class="modal-body">
+                   <span>确定要删除该项目？</span>
+               </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="sure_delete">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <%@include file="/common/footer.html"%>
 </div>
 <script src="<%=basePath%>/plugins/app.min.js" type="text/javascript"></script>"

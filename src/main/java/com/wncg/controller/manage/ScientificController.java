@@ -20,9 +20,16 @@ public class ScientificController {
     @Autowired
     private IScientificService scientificService;
 
+    /*
+    * 主页
+    * */
     @RequestMapping("/scientific")
     public String getScientificIndex(){return "achievements/scientific";}
 
+    /*
+    * 添加科研项目
+    *
+    * */
     @RequestMapping("/addScientific")
     @ResponseBody
     public Page addScientific(ScientificResearch scientificResearch){
@@ -34,9 +41,39 @@ public class ScientificController {
     }
 
 
+    /*
+    * 查询
+    * */
     @RequestMapping("/getScientificList")
     @ResponseBody
     public List<ScientificResearch> getScientificList(String type){
+
         return scientificService.getScientificList(type);
+    }
+
+    /*
+    * 删除
+    * */
+    @RequestMapping("/deleteScientific")
+    @ResponseBody
+    public Page deleteScientific(int id){
+        Page page=new Page();
+        scientificService.deleteScientific(id);
+        page.setMessage("成功删除");
+        page.setSuccess(true);
+        return page;
+    }
+
+    /*
+    * 更新
+    * */
+    @RequestMapping("/updateScientific")
+    @ResponseBody
+    public Page updateScientific(ScientificResearch scientificResearch){
+        Page page=new Page();
+        scientificService.updateScientific(scientificResearch);
+        page.setMessage("更新成功");
+        page.setSuccess(true);
+        return page;
     }
 }
