@@ -26,6 +26,9 @@
 
 <link rel="stylesheet" href="<%=basePath%>/plugins/fakeLoader/css/fakeLoader.css">
 
+<link rel="stylesheet" href="<%=basePath%>/plugins/bootstrap-switch/css/bootstrap-switch.min.css">
+
+
 <!-- Theme style -->
 <link rel="stylesheet" href="<%=basePath%>/theme/css/AdminLTE.min.css">
 
@@ -44,7 +47,11 @@
 
 <script src="<%=basePath%>/plugins/fakeLoader/js/fakeLoader.min.js" type="text/javascript"></script>
 
+<script src="<%=basePath%>/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
 <script src="<%=basePath%>/plugins/jquery.common.js" type="text/javascript"></script>
+
+<script src="<%=basePath%>/js/common/public-data.js" type="text/javascript"></script>
 
 
 <head>
@@ -112,6 +119,7 @@
                                     <th>编号</th>
                                     <th>内容</th>
                                     <th>类别</th>
+                                    <th>是否通过</th>
                                     <th>创建时间</th>
                                     <th>更新时间</th>
                                 </tr>

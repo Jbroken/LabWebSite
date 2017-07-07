@@ -2,15 +2,15 @@
  * Created by BZhao on 2017/6/23.
  */
 
-var patent_type = ["发明专利", "实用新型", "软件著作权"];
+const patent_type = ["发明专利", "实用新型", "软件著作权"];
 
 /**
  *绑定页面专利类型
  */
 function bindPatentType() {
-    var patentType = $("#patentType");
+    let patentType = $("#patentType");
     patentType.empty();
-    var dataItems = [];
+    let dataItems = [];
     $.each(patent_type, function (index, item) {
         dataItems.push('<option value="' + index + '" class="text-left">' + item + '</option>')
     });
@@ -26,7 +26,7 @@ function bindPatentType() {
  * 向服务器请求数据
  */
 function getAllData() {
-    var typeList = $('#patentType').selectpicker('val');
+    let typeList = $('#patentType').selectpicker('val');
     common.showWait();
     $.ajax({
         url: '../achievements/getPatentList',
@@ -49,7 +49,7 @@ function getAllData() {
  *
  */
 function bindData(dataList){
-    var table = $('table tbody'), patentList = [];
+    let table = $("table tbody"), patentList = [];
     table.empty();
 
     $.each(dataList, function (index, node) {
@@ -58,11 +58,30 @@ function bindData(dataList){
         patentList.push('<td>' + (index + 1) + '</td>');
         patentList.push('<td>' + node.content + '</td>');
         patentList.push('<td>' + patent_type[node.type] + '</td>');
+        patentList.push('<td>' +
+                            '<input name="status" type="checkbox" data-size="small"' +
+                            'value='+node.ispass +'>' +
+                        '</td>');
         patentList.push('<td>' + node.createdate + '</td>');
         patentList.push('<td>' + node.updatedate + '</td>');
         patentList.push('</tr>');
-    })
+    });
     table.append(patentList.join(' '));
+
+    $('[name="status"]').bootstrapSwitch({
+        onText:"是",
+        offText:"否",
+        onColor:"success",
+        offColor:"info",
+        size:"small",
+        onSwitchChange:function(event,state){
+            if(state==true){
+                $(this).val("1");
+            }else{
+                $(this).val("0");
+            }
+        }
+    })
 }
 
 /**
@@ -83,13 +102,13 @@ $('#add').click(function () {
 });
 
 $('#del').click(function () {
-    var id = $('input[name="patentID"]:checked').val();
+    let id = $('input[name="patentID"]:checked').val();
     if (id == null) {
         common.successPrompt("请选中需要被删除的数据！");
         return;
     }
     $('#Del_Modal').modal('show');
-})
+});
 
 $('#search').click(function () {
     getAllData();
@@ -104,8 +123,8 @@ $('#edit').click(function () {
  * 上传新增专利
  */
 function addPatent() {
-    var param = {};
-    var patent_type = $('#patent_type').selectpicker('val');
+    let param = {};
+    let patent_type = $('#patent_type').selectpicker('val');
     if (patent_type == null) {
         patent_type = 0;
     }
@@ -135,7 +154,7 @@ function addPatent() {
  * 删除专利
  */
 $('#del_patent').click(function () {
-    var id = $('input[name="patentID"]:checked').val();
+    let id = $('input[name="patentID"]:checked').val();
     $('#Del_Modal').modal('hide');
     common.showWait();
     $.ajax({
@@ -153,14 +172,14 @@ $('#del_patent').click(function () {
             common.successPrompt("删除数据失败！");
         }
     })
-})
+});
 
 /**
  * 通过ID修改专利
  */
 function editPatent() {
-    var id = $('input[name="patentID"]:checked').val();
-    if (id == null) {
+    let id = $('input[name="patentID"]:checked').val();
+    if (id === null) {
         common.successPrompt("请选中需要修改的数据！");
         return;
     }
@@ -207,8 +226,8 @@ function bindModal(patent) {
  * 上传编辑后的数据
  */
 function updatePatent() {
-    var param = {};
-    var patent_type = $('#patent_type').selectpicker('val');
+    let param = {};
+    let patent_type = $('#patent_type').selectpicker('val');
     if (patent_type == null) {
         patent_type = 0;
     }
@@ -238,8 +257,8 @@ function updatePatent() {
 /**
  * 初始化富文本编辑器
  */
-var E = window.wangEditor;
-var editor = new E('#patent_text');
+let E = window.wangEditor;
+let editor = new E('#patent_text');
 editor.create();
 /**********************end*******************/
 
