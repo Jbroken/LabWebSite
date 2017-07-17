@@ -36,5 +36,12 @@ public class ScientificControllerTest {
       System.out.println("success");
    }
 
+   @Test
+   public void scientificById() throws Exception{
+      int id=1;
+      scientificController.scientificById(id);
+      System.out.println("success");
+   }
+
 
 }

@@ -31,9 +31,12 @@
          WHERE  Type=#{type}
     </select>
 
-    <update id="updateScientific" >
-        UPDATE
-    </update>
+    <select id="scientificById" resultMap="BaseResultMap">
+        SELECT * FROM t_scientificresearch
+          WHERE ID=#{id}
+    </select>
+
+
 
 
 

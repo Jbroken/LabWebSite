@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row">
                 <div class="tool-bar">
-                    <span class="icon-margin" title="查询">
+                    <span class="icon-margin" title="查询" id="query">
                         <a class="glyphicon glyphicon-search"></a>
                     </span>
 
@@ -73,7 +73,7 @@
                         <a class="glyphicon glyphicon-plus-sign"></a>
                     </span>
 
-                    <span title="更改" class="icon-margin">
+                    <span title="更改" class="icon-margin" id="update">
                         <a class="glyphicon glyphicon-pencil"></a>
                     </span>
 
@@ -122,7 +122,7 @@
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">新增项目</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
                     <form>

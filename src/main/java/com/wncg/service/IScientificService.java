@@ -18,5 +18,7 @@ public interface IScientificService {
 
     void updateScientific(ScientificResearch scientificResearch);
 
+    ScientificResearch scientificById(int id);
+
 }
 

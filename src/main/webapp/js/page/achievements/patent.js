@@ -210,11 +210,12 @@ function bindModal(patent) {
     $('#addModal').empty();
     $('#addModal').append("修改专利");
 
+
+    //移除save_patent上的click事件
     $('#typeID').val(patent.id);
     $('#patent_type').selectpicker('val', patent_type[patent.type]);
     editor.txt.html(patent.content);
 
-    //移除save_patent上的click事件
     $('#save_patent').off();
     $('#save_patent').on("click", function () {
         updatePatent();

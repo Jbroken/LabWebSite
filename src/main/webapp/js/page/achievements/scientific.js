@@ -11,12 +11,17 @@ var E = window.wangEditor;
 var editor = new E('#scientific_text')
 editor.create();
 
-/*
-* 触发事件
-* */
+/**
+ * 触发事件
+ */
 $('#add').click(function () {
     editor.txt.clear();
     $('#Modal').modal('show');
+    $('#myModalLabel').empty();
+    $('#myModalLabel').append("新增项目");
+    $('#save_scientific').on("click",function () {
+        addScientific();
+    })
 });
 
 $('#delete').click(function () {
@@ -28,10 +33,86 @@ $('#delete').click(function () {
     $('#del_Modal').modal('show');
 });
 
+$('#query').click(function () {
+    getAllData();
+})
+
+$('#update').click(function () {
+    getData();
+})
+
+/**
+ * 获取数据
+ */
+function getData() {
+    var id = $('input[name="scientificID"]:checked').val();
+    if (id==null) {
+        common.successPrompt("选择修改项目");
+        return;
+    }
+    $.ajax({
+        url: '../scientific/scientificById',
+        type: 'post',
+        dataType: 'json',
+        data: {id: id},
+        success: function (rdata) {
+            common.closeWait();
+            bindModal(rdata.data);
+        },
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("获取数据失败！");
+        }
+    })
+}
+
+/**
+ * 显示获取的数据
+ * @param ScientificResearch
+ */
+function bindModal(ScientificResearch){
+    $('#Modal').modal('show');
+    $('#myModalLabel').empty();
+    $('#myModalLabel').append("修改数据");
+    
+    $('#scientific_type').selectpicker('val', scientific_type[ScientificResearch.type]);
+    $('#isCompleted').val(ScientificResearch.iscomplete);
+    editor.txt.html(ScientificResearch.content);
+    $('#save_scientific').on("click",function () {
+        updateDate();
+    })
+}
+/**
+ * 更新数据
+ */
+function updateDate() {
+    var param ={};
+    param.type = $('#scientific_type').selectpicker('val');
+    param.iscomplete=$('#isCompleted').val();
+    param.content = editor.txt.html();
+    common.showWait();
+    $.ajax({
+        url:'../scientific/updateDate',
+        type:'post',
+        dataType:'json',
+        data:param,
+        success: function (rdata) {
+            common.closeWait();
+            common.successPrompt(rdata.message);
+            $('#Modal').modal('hide');
+            getAllData();
+        },
+        error: function () {
+            common.closeWait();
+            common.errorPrompt("上传数据失败！")
+        }
+    })
+}
+
 /**
  * 上传新增项目
  */
-$('#save_scientific').click(function () {
+function addScientific() {
     var param ={};
     param.type = $('#scientific_type').selectpicker('val');
     param.iscomplete=$('#isCompleted').val();
@@ -54,10 +135,10 @@ $('#save_scientific').click(function () {
         }
     })
 
-});
-/*
-* 删除项目
-* */
+}
+/**
+ * 删除项目
+ */
 $('#sure_delete').click(function () {
     var ID=$('input[name="scientificID"]:checked').val();
     common.showWait();

@@ -41,5 +41,9 @@ public class ScientificService implements IScientificService {
         scientificResearchMapper.updateByPrimaryKey(scientificResearch);
     }
 
+    public ScientificResearch scientificById(int id){
+        return scientificResearchMapperCustom.scientificById(id);
+    }
+
 
 }

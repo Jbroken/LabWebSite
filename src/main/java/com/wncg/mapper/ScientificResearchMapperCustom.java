@@ -14,5 +14,6 @@ public interface ScientificResearchMapperCustom {
 
     List<ScientificResearch> scientificList(String type);
 
+    ScientificResearch scientificById(int id);
 
 }
