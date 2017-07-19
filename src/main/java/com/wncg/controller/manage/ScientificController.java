@@ -1,9 +1,11 @@
 package com.wncg.controller.manage;
 
+import com.wncg.pojo.Patent;
 import com.wncg.pojo.ScientificResearch;
 import com.wncg.service.IScientificService;
 import com.wncg.service.impl.ScientificService;
 import com.wncg.vojo.Page;
+import com.wncg.vojo.PageT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,8 +78,12 @@ public class ScientificController {
      */
     @RequestMapping("/scientificById")
     @ResponseBody
-    public ScientificResearch scientificById(int id){
-        return scientificService.scientificById(id);
+    public PageT<ScientificResearch> scientificById(int id){
+        PageT<ScientificResearch> pageT = new PageT<ScientificResearch>();
+        pageT.setData(scientificService.scientificById(id));
+        pageT.setMessage("获取数据成功！");
+        pageT.setSuccess(true);
+        return pageT;
     }
 
     /**

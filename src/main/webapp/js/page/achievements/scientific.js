@@ -68,16 +68,16 @@ function getData() {
 
 /**
  * 显示获取的数据
- * @param ScientificResearch
+ * @param scientific
  */
-function bindModal(ScientificResearch){
+function bindModal(scientific){
     $('#Modal').modal('show');
     $('#myModalLabel').empty();
     $('#myModalLabel').append("修改数据");
     
-    $('#scientific_type').selectpicker('val', scientific_type[ScientificResearch.type]);
-    $('#isCompleted').val(ScientificResearch.iscomplete);
-    editor.txt.html(ScientificResearch.content);
+    $('#scientific_type').selectpicker('val', scientific_type[scientific.type]);
+    $('#isCompleted').val(scientific.iscomplete);
+    editor.txt.html(scientific.content);
     $('#save_scientific').on("click",function () {
         updateDate();
     })
