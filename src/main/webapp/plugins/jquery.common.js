@@ -1,7 +1,7 @@
 /**
  * Created by BZhao on 2017/6/23.
  */
-var common={
+let common={
     showWait: () => {
         $(document.body).append('<div class="fakeloader"></div>');
         $(".fakeloader").fakeLoader({
@@ -27,4 +27,4 @@ var common={
             content: Msg
         });
     }
-}
+};
